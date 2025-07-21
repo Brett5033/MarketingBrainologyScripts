@@ -1,6 +1,6 @@
 from spectrum_lib.spectrum_lib import SpectrumMath
 
-from neuro_impl.utils import BB_channels
+from BrainBitPython.BrainBitDemo.neuro_impl.utils import BB_channels
 
 
 class SpectrumController:
@@ -30,10 +30,11 @@ class SpectrumController:
         t3Values = []
         t4Values = []
         for i in range(len(brain_bit_data)):
-            o1Values.append(brain_bit_data[i].O1 * 1e3)
-            o2Values.append(brain_bit_data[i].O2 * 1e3)
-            t3Values.append(brain_bit_data[i].T3 * 1e3)
-            t4Values.append(brain_bit_data[i].T4 * 1e3)
+            o1Values.append(brain_bit_data.iloc[i]['O1'] * 1e3)
+            o2Values.append(brain_bit_data.iloc[i]['O2'] * 1e3)
+            t3Values.append(brain_bit_data.iloc[i]['T3'] * 1e3)
+            t4Values.append(brain_bit_data.iloc[i]['T4'] * 1e3)
+        print('Proccessed Inital Data')
         self.maths['O1'].push_and_process_data(o1Values)
         self.maths['O2'].push_and_process_data(o2Values)
         self.maths['T3'].push_and_process_data(t3Values)

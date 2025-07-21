@@ -3,7 +3,7 @@ from em_st_artifacts.utils.lib_settings import MathLibSetting, ArtifactDetectSet
     MentalAndSpectralSetting
 from em_st_artifacts.utils.support_classes import RawChannelsArray
 
-from neuro_impl.utils import BB_channels
+from BrainBitPython.BrainBitDemo.neuro_impl.utils import BB_channels
 
 
 class EmotionMonopolar:
