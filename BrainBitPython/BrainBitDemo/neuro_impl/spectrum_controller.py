@@ -5,9 +5,9 @@ from BrainBitPython.BrainBitDemo.neuro_impl.utils import BB_channels
 
 class SpectrumController:
     def __init__(self):
-        sampling_rate = 250  # raw signal sampling frequency
-        fft_window = sampling_rate * 4  # spectrum calculation window length
-        process_win_rate = 5  # spectrum calculation frequency
+        sampling_rate = 1  # raw signal sampling frequency
+        fft_window = sampling_rate * 2  # spectrum calculation window length
+        process_win_rate = 1  # spectrum calculation frequency
         bord_frequency = 50  # upper bound of frequencies for spectrum calculation
         normalize_spect_by_bandwidth = True  # normalization of the EEG spectrum by the width of the wavebands
         delta_coef = 0.0
@@ -34,7 +34,7 @@ class SpectrumController:
             o2Values.append(brain_bit_data.iloc[i]['O2'] * 1e3)
             t3Values.append(brain_bit_data.iloc[i]['T3'] * 1e3)
             t4Values.append(brain_bit_data.iloc[i]['T4'] * 1e3)
-        print('Proccessed Inital Data')
+        #print('Proccessed Inital Data')
         self.maths['O1'].push_and_process_data(o1Values)
         self.maths['O2'].push_and_process_data(o2Values)
         self.maths['T3'].push_and_process_data(t3Values)
@@ -58,3 +58,6 @@ class SpectrumController:
             waves_spectrum = self.maths[BB_channels[i]].read_waves_spectrum_info_arr()
             if len(waves_spectrum) > 0:
                 self.processedWaves(waves_spectrum[-1], BB_channels[i])
+
+    def clear(self):
+        del self.maths
